@@ -6,8 +6,8 @@ This document outlines the API for the vkt_xp export system, providing functions
 
 [![Preview 1](https://iili.io/Fk5fScu.png)](https://iili.io/Fk5fScu.png)  [![Preview 2](https://iili.io/Fk5CBj4.png)](https://iili.io/Fk5CBj4.png)
 
-
-
+# Requirements
+MySQL-Async or OxMySQL
 
 ## Client-Side Functions
 
