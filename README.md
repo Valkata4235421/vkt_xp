@@ -2,6 +2,10 @@
 
 This document outlines the API for the vkt_xp export system, providing functions to manage XP and levels for players in specific categories.
 
+# Preview
+
+[![Preview](https://iili.io/FkRyMa2.png)](https://iili.io/FkRyMa2.png) [![Preview](https://iili.io/FkRysna.png)](https://iili.io/FkRysna.png)
+
 ## Client-Side Functions
 
 ### GetXP(name)
