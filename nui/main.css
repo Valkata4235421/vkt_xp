@@ -1,0 +1,214 @@
+/* Container */
+#xp-container {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: #1c1c1c;
+    padding: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    width: 320px;
+    max-height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    max-width: 100vw;
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+#xp-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#xp-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#xp-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+#xp-container.fade-out {
+    opacity: 0;
+}
+
+/* Header */
+#xp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+/* Logo + Title */
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.server-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#xp-header h1 {
+    font-size: 20px;
+    margin: 0;
+    color: #ffffff;
+}
+
+/* Buttons */
+.header-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+#mode-toggle,
+#close-btn {
+    border: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mode-toggle {
+    background: #444;
+    color: #fff;
+}
+
+#mode-toggle:hover {
+    background: #666;
+}
+
+#close-btn {
+    background: #ff4444;
+    color: white;
+}
+
+#close-btn:hover {
+    background: #cc0000;
+}
+
+/* XP Grid & Cards */
+#xp-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.xp-card {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.xp-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.xp-card-header h2 {
+    margin: 0;
+    font-size: 16px;
+    color: #ffffff;
+    text-transform: capitalize;
+}
+
+.level {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.xp-bar {
+    width: 100%;
+    height: 15px;
+    background: #3a3a3a;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.xp-progress {
+    height: 100%;
+    background: #ffffff;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+.xp-card p {
+    font-size: 12px;
+    margin: 3px 0;
+    color: #cccccc;
+}
+
+/* Light Mode Overrides */
+body.light-mode #xp-container {
+    background: #f0f0f0;
+    color: #222;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+}
+
+body.light-mode #xp-header {
+    border-bottom: 1px solid #ccc;
+}
+
+body.light-mode #xp-header h1 {
+    color: #222;
+}
+
+body.light-mode #close-btn {
+    background: #cc4444;
+    color: #fff;
+}
+
+body.light-mode #close-btn:hover {
+    background: #aa2222;
+}
+
+body.light-mode #mode-toggle {
+    background: #ddd;
+    color: #222;
+}
+
+body.light-mode #mode-toggle:hover {
+    background: #bbb;
+}
+
+body.light-mode .xp-card {
+    background: #ffffff;
+    color: #222;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+body.light-mode .xp-card-header h2,
+body.light-mode .level,
+body.light-mode .xp-card p {
+    color: #222;
+}
+
+body.light-mode .xp-bar {
+    background: #ddd;
+}
+
+body.light-mode .xp-progress {
+    background: #555;
+}
