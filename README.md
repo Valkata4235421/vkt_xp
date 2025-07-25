@@ -4,7 +4,10 @@ This document outlines the API for the vkt_xp export system, providing functions
 
 # Preview
 
-[![Preview](https://iili.io/FkRyMa2.png)](https://iili.io/FkRyMa2.png) [![Preview](https://iili.io/FkRysna.png)](https://iili.io/FkRysna.png)
+[![Preview 1](https://iili.io/Fk5fScu.png)](https://iili.io/Fk5fScu.png)  [![Preview 2](https://iili.io/Fk5CBj4.png)](https://iili.io/Fk5CBj4.png)
+
+
+
 
 ## Client-Side Functions
 
