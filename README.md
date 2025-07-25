@@ -1,4 +1,4 @@
-# vkt_xp API Documentation
+# vkt_xp Documentation
 
 This document outlines the API for the vkt_xp export system, providing functions to manage XP and levels for players in specific categories.
 
