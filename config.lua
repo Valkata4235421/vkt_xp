@@ -1,5 +1,7 @@
 Config = {}
 
+Config.AllowOverMaxLevel = false
+
 Config.Categories = {
     ['cooking'] = { label = 'Cooking', xpStart = 1000, xpFactor = 0.5, maxLevel = 5 },
     ['fishing'] = { label = 'Fishing', xpStart = 1000, xpFactor = 0.5, maxLevel = 5 },
