@@ -1,5 +1,6 @@
 local cooldowns = {}
 local locks = {}
+local LOCK_TIMEOUT = 10
 
 local function NormalizeCategory(cat)
     return string.lower(cat or ""):gsub("%s+", "")
@@ -35,10 +36,19 @@ end
 
 local function AcquireLock(src, category)
     locks[src] = locks[src] or {}
+
+    local now = os.time()
+    for cat, lockInfo in pairs(locks[src]) do
+        if now - lockInfo.timestamp > LOCK_TIMEOUT then
+            locks[src][cat] = nil
+        end
+    end
+
     if locks[src][category] then
         return false
     end
-    locks[src][category] = true
+
+    locks[src][category] = { locked = true, timestamp = now }
     return true
 end
 
@@ -113,11 +123,27 @@ exports('AddPlayerXP', function(source, categoryName, xpToAdd)
             level = result[1].level
         end
 
-        while level < categoryData.maxLevel and xp >= (categoryData.xpStart + level * categoryData.xpFactor * categoryData.xpStart) do
-            local neededXP = categoryData.xpStart + level * categoryData.xpFactor * categoryData.xpStart
+        local neededXP = categoryData.xpStart + level * categoryData.xpFactor * categoryData.xpStart
+
+        -- Level up only if below maxLevel
+        while xp >= neededXP and level < categoryData.maxLevel do
             xp = xp - neededXP
             level = level + 1
             TriggerClientEvent('chat:addMessage', source, { args = { '^2[vkt_xp]', ('Leveled up %s to level %d!'):format(categoryData.label, level) } })
+            neededXP = categoryData.xpStart + level * categoryData.xpFactor * categoryData.xpStart
+        end
+
+        -- If at maxLevel, allow XP overflow only if enabled
+        if level == categoryData.maxLevel and not Config.AllowOverMaxLevel then
+            local maxNeededXP = categoryData.xpStart + categoryData.maxLevel * categoryData.xpFactor * categoryData.xpStart
+            if xp > maxNeededXP then
+                xp = maxNeededXP
+            end
+        end
+
+        -- Always cap level at maxLevel (to prevent level 6 and above)
+        if level > categoryData.maxLevel then
+            level = categoryData.maxLevel
         end
 
         if result[1] then
@@ -161,4 +187,10 @@ end)
 
 exports('InitPlayerXP', function(source)
     TriggerEvent('vkt_xp:server:initPlayerXP', source)
+end)
+
+AddEventHandler('playerDropped', function(reason)
+    local src = source
+    cooldowns[src] = nil
+    locks[src] = nil
 end)
